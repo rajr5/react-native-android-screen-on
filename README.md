@@ -1,4 +1,6 @@
-# react-native-android-wake-lock
+# react-native-wake-lock
+
+Forked from [react-native-android-wake-lock](https://github.com/gretzky/react-native-android-wake-lock) to release with bugfix.
 
 Native Module for setting a [wake lock](https://developer.android.com/training/scheduling/wakelock) on an Android device. Utilizes both `PowerManager` and `WifiManager`.
 
@@ -9,12 +11,12 @@ Native Module for setting a [wake lock](https://developer.android.com/training/s
 Install with npm/yarn.
 
 ```bash
-npm install react-native-android-wake-lock --save
+npm install react-native-wake-lock --save
 // or
 yarn add react-native-wake-lock
 ```
 
-Since this package requires RN 0.60 or higher, this package will be linked automatically. If you run into an issue, you can try `react-native link react-native-android-wake-lock`.
+Since this package requires RN 0.60 or higher, this package will be linked automatically. If you run into an issue, you can try `react-native link react-native-wake-lock`.
 
 ## Usage
 
@@ -28,7 +30,7 @@ This module exposes 2 possible methods for accessing the wake lock: via an inter
 
 ```js
 import React from "react";
-import { WakeLockInterface, useWakeLock } from "react-native-android-wake-lock";
+import { WakeLockInterface, useWakeLock } from "react-native-wake-lock";
 
 // the interface exposes all 3 (async) methods
 const isWakeLocked = WakeLockInterface.isWakeLocked();
