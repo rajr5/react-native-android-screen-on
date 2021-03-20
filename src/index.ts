@@ -15,6 +15,15 @@ If none of these fix the issue, open an issue on Github: https://github.com/gret
 
 const WakeLockInterface = {
   ...WakeLockNativeModule,
+  setPartialWakeLock(): Promise<boolean> {
+    return WakeLockNativeModule.setPartialWakeLock();
+  },
+  releasePartialWakeLock(): Promise<boolean> {
+    return WakeLockNativeModule.releasePartialWakeLock();
+  },
+  isPartialWakeLocked(): Promise<boolean> {
+    return WakeLockNativeModule.isPartialWakeLocked();
+  },
   setWakeLock(): Promise<boolean> {
     return WakeLockNativeModule.setWakeLock();
   },

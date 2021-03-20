@@ -14,8 +14,10 @@ class RNWakeLockModule(reactContext: ReactApplicationContext) : ReactContextBase
     private val mPowerManager: PowerManager
     private val mWifiManager: WifiManager
 
+    private var partialWakeLock: PowerManager.WakeLock? = null
     private var wakeLock: PowerManager.WakeLock? = null
     private var wifiLock: WifiManager.WifiLock? = null
+    private var isPartialWakeLocked = false
     private var isWakeLocked = false
 
     override fun getName(): String {
@@ -26,6 +28,7 @@ class RNWakeLockModule(reactContext: ReactApplicationContext) : ReactContextBase
         mPowerManager = reactContext.getSystemService(Context.POWER_SERVICE) as PowerManager
         mWifiManager = reactContext.getSystemService(Context.WIFI_SERVICE) as WifiManager 
 
+        partialWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "RNPartialWakeLock")
         wakeLock = mPowerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK or PowerManager.ACQUIRE_CAUSES_WAKEUP, "RNWakeLock")
         wifiLock = mWifiManager.createWifiLock(WifiManager.WIFI_MODE_FULL, "RNWakeLock")
     }
@@ -42,6 +45,16 @@ class RNWakeLockModule(reactContext: ReactApplicationContext) : ReactContextBase
     }
 
     @ReactMethod
+    fun setPartialWakeLock(promise: Promise) {
+         if (isPartialWakeLocked) {
+             return
+         }
+         this.partialWakeLock!!.acquire()
+         isPartialWakeLocked = true
+         promise.resolve(isPartialWakeLocked)
+     }
+
+    @ReactMethod
     fun releaseWakeLock(promise: Promise) {
         if (!isWakeLocked) {
             return
@@ -50,6 +63,21 @@ class RNWakeLockModule(reactContext: ReactApplicationContext) : ReactContextBase
         this.wifiLock!!.release()
         isWakeLocked = false
         promise.resolve(isWakeLocked)
+    }
+
+    @ReactMethod
+    fun releasePartialWakeLock(promise: Promise) {
+        if (!isPartialWakeLocked) {
+            return
+        }
+        this.partialWakeLock!!.release()
+        isPartialWakeLocked = false
+        promise.resolve(isPartialWakeLocked)
+    } 
+
+    @ReactMethod
+    fun isPartialWakeLocked(promise: Promise) {
+        promise.resolve(isPartialWakeLocked)
     }
 
     @ReactMethod
