@@ -1,8 +1,8 @@
 # react-native-wake-lock
 
-Forked from [react-native-android-wake-lock](https://github.com/gretzky/react-native-android-wake-lock) to release with bugfix.
+Forked from [react-native-android-wake-lock](https://github.com/gretzky/react-native-android-wake-lock).
 
-Native Module for setting a [wake lock](https://developer.android.com/training/scheduling/wakelock) on an Android device. Utilizes both `PowerManager` and `WifiManager`.
+Native Module for setting a [wake lock](https://developer.android.com/training/scheduling/wakelock) on an Android device and turning the screen on in the process. Utilizes both `PowerManager` and `WifiManager`.
 
 ## Installation
 
@@ -11,12 +11,12 @@ Native Module for setting a [wake lock](https://developer.android.com/training/s
 Install with npm/yarn.
 
 ```bash
-npm install react-native-wake-lock --save
+npm install react-native-android-screen-on --save
 // or
-yarn add react-native-wake-lock
+yarn add react-native-android-screen-on
 ```
 
-Since this package requires RN 0.60 or higher, this package will be linked automatically. If you run into an issue, you can try `react-native link react-native-wake-lock`.
+Since this package requires RN 0.60 or higher, this package will be linked automatically. If you run into an issue, you can try `react-native link react-native-android-screen-on`.
 
 ## Usage
 
@@ -30,7 +30,7 @@ This module exposes 2 possible methods for accessing the wake lock: via an inter
 
 ```js
 import React from "react";
-import { WakeLockInterface, useWakeLock } from "react-native-wake-lock";
+import { WakeLockInterface, useWakeLock } from "react-native-android-screen-on";
 
 // the interface exposes all 3 (async) methods
 const isWakeLocked = WakeLockInterface.isWakeLocked();

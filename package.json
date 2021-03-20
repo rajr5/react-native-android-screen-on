@@ -1,8 +1,8 @@
 {
-  "name": "react-native-wake-lock",
-  "version": "1.0.1",
+  "name": "react-native-android-screen-on",
+  "version": "1.0.3",
   "author": "Josh Gachnang <josh@nang.io>",
-  "repository": "https://github.com/joshgachnang/react-native-wake-lock",
+  "repository": "https://github.com/joshgachnang/react-native-android-screen-on",
   "license": "MIT",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
