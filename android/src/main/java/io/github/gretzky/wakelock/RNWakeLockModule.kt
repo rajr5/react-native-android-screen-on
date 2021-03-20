@@ -26,7 +26,7 @@ class RNWakeLockModule(reactContext: ReactApplicationContext) : ReactContextBase
         mPowerManager = reactContext.getSystemService(Context.POWER_SERVICE) as PowerManager
         mWifiManager = reactContext.getSystemService(Context.WIFI_SERVICE) as WifiManager 
 
-        wakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "RNWakeLock")
+        wakeLock = mPowerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK or PowerManager.ACQUIRE_CAUSES_WAKEUP, "RNWakeLock")
         wifiLock = mWifiManager.createWifiLock(WifiManager.WIFI_MODE_FULL, "RNWakeLock")
     }
 

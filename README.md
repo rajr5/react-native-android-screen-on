@@ -4,6 +4,10 @@ Forked from [react-native-android-wake-lock](https://github.com/gretzky/react-na
 
 Native Module for setting a [wake lock](https://developer.android.com/training/scheduling/wakelock) on an Android device and turning the screen on in the process. Utilizes both `PowerManager` and `WifiManager`.
 
+This will turn on the screen if the app is running in the
+foreground or background. This is great for kiosk apps
+without lockscreens to turn the screen back on when something
+happens, such as a push notification.
 ## Installation
 
 **Note:** This package requires React Native >=0.60.
